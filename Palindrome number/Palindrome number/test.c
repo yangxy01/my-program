@@ -61,26 +61,58 @@ int Is_Palindrome(int n)
 
 int main()
 {
-	int n, i, j,k;
+	int n, i=1, j=1, k;
 	scanf("%d", &n);
-	for (i = 1; i < n; i++)
+	while (i + j <= n)
 	{
-		if (Is_prime(i))//如果i是质数
+		while (Is_prime(j) == 0)//如果不是质数则一直循环直到为质数为止
 		{
-			for (j = 1; j < n; j++)
-			{
-				if (Is_prime(j))//如果j是质数
-				{
-					if (Is_Palindrome(i*i + j*j)&&i<=j)//判断是否回文数
-					{
-						printf("%d %d %d\n", i, j, i*i + j*j);
-						//break;//这个break只是跳出j的循环，继续下一个i
-					}
-				}
-
-			}
+			j++;
 		}
+		while (i <=j)
+		{
+			while (Is_prime(i) == 0)//如果不是质数则一直循环直到为质数为止
+			{
+				i++;
+			}
+			if (Is_Palindrome(i*i + j*j))//扔进去判断是否回文数
+			{
+				if ((i + j) % 2 == 0)
+				printf("%d %d %d\n", i, j, i*i + j*j);
+			}
 
+			i++;
+		}
+		j++;
 	}
+
 	return 0;
 }
+
+
+
+//int main()
+//{
+//	int n, i, j,k;
+//	scanf("%d", &n);
+//	for (i = 1; i < n; i++)
+//	{
+//		if (Is_prime(i))//如果i是质数
+//		{
+//			for (j = 1; j < n; j++)
+//			{
+//				if (Is_prime(j))//如果j是质数
+//				{
+//					if (Is_Palindrome(i*i + j*j) && i <= j)//判断是否回文数
+//					{
+//						printf("%d %d %d\n", i, j, i*i + j*j);
+//						//break;//这个break只是跳出j的循环，继续下一个i
+//					}
+//				}
+//
+//			}
+//		}
+//
+//	}
+//	return 0;
+//}
