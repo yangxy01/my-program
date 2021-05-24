@@ -1,28 +1,63 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 #include<stdio.h>
 #include<string.h>
+
+
+
 int main()
 {
-	char ch[1000];
-	int i;
-	gets(ch);
-	if (ch[0] >= 'a' && ch[0] <='z')
+	int n, arr[10], i, index = 0, tmp;
+	scanf("%d", &n);
+	for (i = 0; i < n; i++)
 	{
-		ch[0] = ch[0] - 'a' + 'A';
+		scanf("%d", &arr[i]);
 	}
-
-		int len = strlen(ch);
-		for (i = 0; i < len; i++)
+	for (int k = 0; k < n - 1; k++)
+	{
+		index = k;
+		for (i = k + 1; i < n; i++)
 		{
-			if ((ch[i] == ' ' )&& (ch[i + 1] >= 'a' && ch[i + 1] <= 'z'))
+			if (arr[i] > arr[index])
 			{
-				ch[i + 1] = ch[i + 1] - 'a' + 'A';
+				index = i;
 			}
 		}
-
-	printf("%s\n", ch);
+		tmp = arr[index];
+		arr[index] = arr[k];
+		arr[k] = tmp;
+	}
+	
+	for (i = 0; i < n; i++)
+	{
+		printf(" %d", arr[i]);
+	}
 	return 0;
 }
+
+
+
+//int main()
+//{
+//	char ch[1000];
+//	int i;
+//	gets(ch);
+//	if (ch[0] >= 'a' && ch[0] <='z')
+//	{
+//		ch[0] = ch[0] - 'a' + 'A';
+//	}
+//
+//		int len = strlen(ch);
+//		for (i = 0; i < len; i++)
+//		{
+//			if ((ch[i] == ' ' )&& (ch[i + 1] >= 'a' && ch[i + 1] <= 'z'))
+//			{
+//				ch[i + 1] = ch[i + 1] - 'a' + 'A';
+//			}
+//		}
+//
+//	printf("%s\n", ch);
+//	return 0;
+//}
 
 //int main()
 //{
